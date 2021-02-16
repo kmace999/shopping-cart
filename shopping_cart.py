@@ -40,4 +40,83 @@ def to_usd(my_price):
     return f"${my_price:,.2f}" #> $12,000.71
 
 #end section of copied setup code
-print(products)
+#print(products)
+
+
+IDlist = []
+for x in products:
+    IDlist.append(str(x["id"]))
+
+print("Welcome to Gusteau Grocery!")
+
+
+shopping_cart = []
+
+def shoppingaction():
+    stillshopping = True
+    firstitem = True
+
+    while stillshopping:
+        while firstitem:
+            itemid = input("Please enter your product's unique ID: ")
+            if itemid not in IDlist:
+                print("Please make sure the ID you entered is correct. Please try again.")
+            else:
+                shopping_cart.append(itemid)
+                firstitem = False
+
+        itemid = input("Please enter another unique product ID or enter 'done' to review your cart: ")
+        if itemid =='done' or itemid in IDlist:
+            if itemid == "done":
+                stillshopping = False
+            else:
+                shopping_cart.append(itemid)
+        else:
+            print("Please make sure the ID you entered is correct. Please try again.")
+
+shoppingaction()
+
+print('Your cart is displayed below:')
+
+#grouping same products, totaling their instances
+#for item in shopping_cart:
+#    same_items = [item for item in shopping_cart if shopping_cart[int(item)]==int(item)]
+#    print(same_items)
+
+
+def showcart():
+    for i in shopping_cart:
+        for k in products:
+            if i == str(k["id"]):
+                productname = k["name"]
+                itemprice = k["price"]
+
+        print(f"+ {productname} ({itemprice})")
+
+
+
+
+changing= True
+
+while changing:
+    showcart()
+    happy = input("Do you wish to checkout? ('yes'/'no'):")
+    if happy =="no":
+        nextaction = input("Which change would you like to make? ('add'/'remove'):")
+        if nextaction =="add":
+            shoppingaction()
+        elif nextaction=="remove":
+            remid = input("Please enter the unique ID of the item you want to remove from your cart: ")
+            if remid in shopping_cart:
+                shopping_cart.remove(remid)
+            elif remid not in shopping_cart:
+                print("Please make sure the ID you entered is correct. Please try again.")
+        else:
+            print("Please enter either 'add' or 'remove'")
+
+    elif happy =='yes':
+        print("Checking out...")
+        changing = False
+
+    else:
+        print("Please enter either 'yes' or 'no'")
