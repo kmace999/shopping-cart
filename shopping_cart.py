@@ -2,6 +2,10 @@
 
 #the below code was copied from https://github.com/prof-rossetti/intro-to-python/blob/master/projects/shopping-cart/README.md
 
+from datetime import datetime
+thisday = datetime.now()
+receiptdate = thisday.strftime("%d/%m/%Y %H:%M")
+
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -47,7 +51,10 @@ IDlist = []
 for x in products:
     IDlist.append(str(x["id"]))
 
-print("Welcome to Gusteau Grocery!")
+print("---------------------------------")
+print("Welcome to Gusteau's Grocery!")
+print("---------------------------------")
+print(" ")
 
 
 shopping_cart = []
@@ -76,6 +83,7 @@ def shoppingaction():
 
 shoppingaction()
 
+print("---------------------------------")
 print('Your cart is displayed below:')
 
 #grouping same products, totaling their instances
@@ -84,14 +92,17 @@ print('Your cart is displayed below:')
 #    print(same_items)
 
 
-def showcart():
-    for i in shopping_cart:
-        for k in products:
-            if i == str(k["id"]):
-                productname = k["name"]
-                itemprice = k["price"]
+#def showcart():
+#    carttotal = 0
+#    for i in shopping_cart:
+#        for k in products:
+#            if i == str(k["id"]):
+#                productname = k["name"]
+#                itemprice = k["price"]
+#                carttotal = carttotal + float(itemprice)
 
-        print(f"+ {productname} ({itemprice})")
+#        print(f"+ {productname} ({itemprice})")
+
 
 
 
@@ -99,7 +110,18 @@ def showcart():
 changing= True
 
 while changing:
-    showcart()
+    carttotal = 0
+    for i in shopping_cart:
+        for k in products:
+            if i == str(k["id"]):
+                productname = k["name"]
+                itemprice = k["price"]
+                carttotal = carttotal + float(itemprice)
+                itemprice = to_usd(itemprice)
+
+
+        print(f"+ {productname} ({itemprice})")
+    print(" ")
     happy = input("Do you wish to checkout? ('yes'/'no'):")
     if happy =="no":
         nextaction = input("Which change would you like to make? ('add'/'remove'):")
@@ -112,11 +134,43 @@ while changing:
             elif remid not in shopping_cart:
                 print("Please make sure the ID you entered is correct. Please try again.")
         else:
+            print(" ")
             print("Please enter either 'add' or 'remove'")
 
     elif happy =='yes':
-        print("Checking out...")
+        print(" ")
+        print("~ Checking out ~")
+        print(" ")
         changing = False
 
     else:
+        print(" ")
         print("Please enter either 'yes' or 'no'")
+
+print("---------------------------------")
+print("Gusteau's Grocery")
+print("www.gusteausgrocery.com")
+print("---------------------------------")
+print(f"Checkout at: {receiptdate}")
+print("---------------------------------")
+print("Shopping cart:")
+for i in shopping_cart:
+    for k in products:
+        if i == str(k["id"]):
+            productname = k["name"]
+            itemprice = to_usd(k["price"])
+
+    print(f"+ {productname} ({itemprice})")
+print("---------------------------------")
+subtotal = to_usd(carttotal)
+print(f"Subtotal: {subtotal}")
+dcsalestax = .06
+displaydcsales = "{:.0%}".format(dcsalestax)
+carttax = carttotal*dcsalestax
+displaytax = to_usd(carttax)
+print(f"Sales tax ({displaydcsales}): {displaytax}")
+carttotal = to_usd(carttax+carttotal)
+print(f"Total: {carttotal}")
+print("---------------------------------")
+print("Merci, come back soon!")
+print("---------------------------------")
