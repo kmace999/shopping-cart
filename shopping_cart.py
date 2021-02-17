@@ -4,7 +4,7 @@
 
 from datetime import datetime
 thisday = datetime.now()
-receiptdate = thisday.strftime("%d/%m/%Y %H:%M")
+receiptdate = thisday.strftime("%m/%d/%Y %H:%M")
 
 
 products = [
@@ -150,6 +150,8 @@ while changing:
 print("---------------------------------")
 print("Gusteau's Grocery")
 print("www.gusteausgrocery.com")
+print("1999 Rue Ratatouille")
+print("75002 Paris, France")
 print("---------------------------------")
 print(f"Checkout at: {receiptdate}")
 print("---------------------------------")

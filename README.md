@@ -1,6 +1,7 @@
 # shopping-cart
 
-
+COMMENT FROM LAST PROJECT
+Nice README, but let's mention the environment variable customization before the python run command.
 
 
 #Setting up the environment
