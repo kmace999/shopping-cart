@@ -71,7 +71,8 @@ while stillshopping:
         else:
             shopping_cart[0] = itemid
             for item in products:
-                if item["price_per"]=="pound":
+                onlybanana = str(item["id"])
+                if item["price_per"]=="pound" and shopping_cart[-1]==onlybanana:
                     namename = item["name"]
                     countpounds = True
                     while countpounds:
@@ -93,8 +94,9 @@ while stillshopping:
                 stillshopping = False
             else:
                 shopping_cart.append(itemid)
+                onlybanana = str(item["id"])
                 for item in products:
-                    if item["price_per"]=="pound":
+                    if item["price_per"]=="pound" and shopping_cart[-1]==onlybanana:
                         namename = item["name"]
                         countpounds = True
                         while countpounds:
@@ -144,9 +146,11 @@ while changing:
                         print("Please make sure the ID you entered is correct. Please try again.")
                     else:
                         shopping_cart.append(itemid)
+
                         firstitem = False
                         for item in products:
-                            if item["price_per"]=="pound":
+                            onlybanana = str(item["id"])
+                            if item["price_per"]=="pound" and shopping_cart[-1]==onlybanana:
                                 namename = item["name"]
                                 countpounds = True
                                 while countpounds:
@@ -165,7 +169,8 @@ while changing:
                     else:
                         shopping_cart.append(itemid)
                         for item in products:
-                            if item["price_per"]=="pound":
+                            onlybanana = str(item["id"])
+                            if item["price_per"]=="pound" and shopping_cart[-1]==onlybanana:
                                 namename = item["name"]
                                 countpounds = True
                                 while countpounds:
