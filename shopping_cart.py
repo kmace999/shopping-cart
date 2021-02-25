@@ -45,7 +45,7 @@ def to_usd(my_price):
     return f"${my_price:,.2f}" #> $12,000.71
 
 #end section of copied setup code
-#print(products)
+
 
 
 IDlist = []
