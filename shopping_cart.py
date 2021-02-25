@@ -60,7 +60,6 @@ print(" ")
 
 shopping_cart = ["b"]
 
-#def shoppingaction():
 stillshopping = True
 
 
@@ -109,28 +108,9 @@ while stillshopping:
         else:
             print("Please make sure the ID you entered is correct. Please try again.")
 
-#shoppingaction()
 
 print("---------------------------------")
 print('Your cart is displayed below:')
-
-#grouping same products, totaling their instances
-#for item in shopping_cart:
-#    same_items = [item for item in shopping_cart if shopping_cart[int(item)]==int(item)]
-#    print(same_items)
-
-
-#def showcart():
-#    carttotal = 0
-#    for i in shopping_cart:
-#        for k in products:
-#            if i == str(k["id"]):
-#                productname = k["name"]
-#                itemprice = k["price"]
-#                carttotal = carttotal + float(itemprice)
-
-#        print(f"+ {productname} ({itemprice})")
-
 
 
 
